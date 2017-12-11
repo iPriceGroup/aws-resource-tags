@@ -1,0 +1,20 @@
+---
+# meta/mail.yml
+
+galaxy_info:
+  author: "Anton Bormotov"
+  description: "Ansible role to tag aws resources"
+  company: "ipricegroup Sdn Bhd"
+  license: "BSD"
+  min_ansible_version: 1.2
+  github_branch: "master"
+  platforms:
+  - name: "Ubuntu"
+    versions:
+      - "trusty"
+
+  galaxy_tags:
+    - "aws-tag"
+    - "ec2-tag"
+    - "ebs-tag"
+  dependencies: []
