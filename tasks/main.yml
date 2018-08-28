@@ -3,7 +3,7 @@
 
 - name: ec2_eni_facts | get instance id by internal ip
   ec2_eni_facts:
-    region: "{{ ec2_region }}"
+    region: "{{ lookup('env', 'AWS_DEFAULT_REGION') }}"
     filters:
       addresses.private-ip-address: '{{ ansible_eth0.ipv4.address }}'
   delegate_to: "127.0.0.1"
@@ -11,8 +11,8 @@
 
 - name: ec2_tag | ensure tags are present on a resource
   ec2_tag:
-    region: "{{ ec2_region }}"
-    resource: "{{ network_details.interfaces[0].attachment.instance_id }}"
+    region: "{{ lookup('env', 'AWS_DEFAULT_REGION') }}"
+    resource: "{{ network_details.network_interfaces[0].attachment.instance_id }}"
     state: "present"
     tags:
       Name: "{{ hostname | default(ansible_hostname) }}"
